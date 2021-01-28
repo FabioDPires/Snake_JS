@@ -48,6 +48,10 @@ function update() {
 
 function draw() {
   gameBoard.innerHTML = "";
+  const scoreElement = document.createElement("P");
+  scoreElement.innerText = "Score:" + score;
+  scoreElement.classList.add("score");
+  gameBoard.appendChild(scoreElement);
   drawSnake(gameBoard);
   drawFood(gameBoard);
 }
