@@ -16,7 +16,11 @@ let gameOver = false;
 
 function main(currentTime) {
   if (gameOver) {
-    alert("GAME OVER!");
+    if (confirm("'GAME OVER! PRESS OK TO PLAY AGAIN")) {
+      window.location = "/";
+    }
+
+    return;
   }
 
   window.requestAnimationFrame(main);
