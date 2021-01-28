@@ -25,13 +25,18 @@
         grid-template-columns: repeat(21, 1fr);
       }
 
-      .snake {
-        background-color: hsl(200, 100%, 50%);
+      .snake-body {
+        background-color: greenyellow;
+        border: 0.25vmin solid black;
+      }
+
+      .snake-head {
+        background-color: green;
         border: 0.25vmin solid black;
       }
 
       .food {
-        background-color: hsl(50, 100%, 50%);
+        background-color: red;
         border: 0.25vmin solid black;
       }
 
@@ -39,10 +44,26 @@
         color: red;
         text-align: center;
       }
+
+      button {
+        height: 7vh;
+        width: 15vw;
+        margin-top: 40vh;
+        margin-left: -10vw;
+      }
+
+      #title {
+        font-size: xx-large;
+        margin-left: 22vw;
+        margin-top: 15vh;
+      }
     </style>
     <script src="game.js" defer type="module"></script>
   </head>
   <body>
-    <div id="game-board"></div>
+    <div id="game-board">
+      <p id="title">SNAKE</p>
+      <button id="start">Play</button>
+    </div>
   </body>
 </html>

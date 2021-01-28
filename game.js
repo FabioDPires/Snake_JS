@@ -14,15 +14,21 @@ let lastRenderTime = 0;
 const gameBoard = document.getElementById("game-board");
 let gameOver = false;
 let score = 0;
+let startButton = document.getElementById("start");
 
-export function updateScore(sum) {
-  score += sum;
+startButton.onclick = function () {
+  startGame();
+};
+
+function startGame() {
+  console.log("STARTED");
+  window.requestAnimationFrame(main);
 }
 
 function main(currentTime) {
   if (gameOver) {
     console.log("THE SCORE WAS:", score);
-    if (confirm("Score:" + score + " PRESS OK TO PLAY AGAIN")) {
+    if (confirm("Score:" + score + " PRESS OK TO GO BACK TO THE MENU")) {
       window.location = "/";
     }
 
@@ -37,8 +43,6 @@ function main(currentTime) {
   update();
   draw();
 }
-
-window.requestAnimationFrame(main);
 
 function update() {
   updateSnake();
@@ -58,4 +62,8 @@ function draw() {
 
 function checkDeath() {
   gameOver = outsideGrid(getSnakeHead()) || snakeIntersection();
+}
+
+export function updateScore(sum) {
+  score += sum;
 }
