@@ -13,10 +13,16 @@ import { outsideGrid } from "./grid.js";
 let lastRenderTime = 0;
 const gameBoard = document.getElementById("game-board");
 let gameOver = false;
+let score = 0;
+
+export function updateScore(sum) {
+  score += sum;
+}
 
 function main(currentTime) {
   if (gameOver) {
-    if (confirm("'GAME OVER! PRESS OK TO PLAY AGAIN")) {
+    console.log("THE SCORE WAS:", score);
+    if (confirm("Score:" + score + " PRESS OK TO PLAY AGAIN")) {
       window.location = "/";
     }
 
@@ -28,7 +34,6 @@ function main(currentTime) {
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
 
   lastRenderTime = currentTime;
-  console.log("GAMEBOARD IS: ", gameBoard);
   update();
   draw();
 }
