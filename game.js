@@ -25,12 +25,29 @@ function startGame() {
   window.requestAnimationFrame(main);
 }
 
+function showEndGameMenu() {
+  gameBoard.innerHTML = "";
+  const scoreElement = document.createElement("P");
+  scoreElement.innerText = "Score:" + score;
+  scoreElement.classList.add("score");
+  gameBoard.appendChild(scoreElement);
+  const backElement = document.createElement("Button");
+  backElement.innerText = "Back To Main Menu";
+  backElement.setAttribute("id", "back");
+  backElement.onclick = function () {
+    backMenu();
+  };
+  gameBoard.appendChild(backElement);
+}
+
+function backMenu() {
+  window.location = "/";
+}
+
 function main(currentTime) {
   if (gameOver) {
     console.log("THE SCORE WAS:", score);
-    if (confirm("Score:" + score + " PRESS OK TO GO BACK TO THE MENU")) {
-      window.location = "/";
-    }
+    showEndGameMenu();
 
     return;
   }
@@ -52,10 +69,6 @@ function update() {
 
 function draw() {
   gameBoard.innerHTML = "";
-  const scoreElement = document.createElement("P");
-  scoreElement.innerText = "Score:" + score;
-  scoreElement.classList.add("score");
-  gameBoard.appendChild(scoreElement);
   drawSnake(gameBoard);
   drawFood(gameBoard);
 }
